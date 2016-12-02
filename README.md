@@ -1,5 +1,17 @@
 # DotaPicker
-Hi!
-Our small app to help suggest characters to pick in a game of DotA 2.
 
-Expect more stuff soon...
+Run the following shell script in the folder Data
+
+1) Without proxy i.e running at home :  
+
+	$ bash run.sh start_match_sequence_number end_match_sequence_number
+
+2) With proxy i.e. when running in college on PICT wifi : 
+
+	$ bash runWithProxy.sh start_match_sequence_number end_match_sequence_number
+
+	to change the proxy ip and post go in scriptWithProxy.js and change the ip in the key "host" and port number in the "port" key
+
+Preferably end_match_sequence_number-start_match_sequence_number=2000
+
+otherwise the code fails
