@@ -10,7 +10,7 @@ Run the following shell script in the folder Data
 
 	$ bash runWithProxy.sh start_match_sequence_number end_match_sequence_number
 
-	to change the proxy ip and post go in scriptWithProxy.js and change the ip in the key "host" and port number in the "port" key
+to change the proxy ip and post go in scriptWithProxy.js and change the ip in the key "host" and port number in the "port" key
 
 Preferably end_match_sequence_number-start_match_sequence_number=2000
 
