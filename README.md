@@ -15,3 +15,5 @@ to change the proxy ip and post go in scriptWithProxy.js and change the ip in th
 Preferably end_match_sequence_number-start_match_sequence_number=2000
 
 otherwise the code fails
+
+The first match sequence number is 2372531764 for the first game played for the new version
