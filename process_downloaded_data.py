@@ -58,7 +58,7 @@ for filename in match_files:
 		
 		match_data[attr] = np.append(match_data[attr], [np.concatenate((attr_array_radiant, attr_array_dire))], axis = 0)
 
-	if actual_count%10000==0:
+	if actual_count%5000==0:
 		pickle_count += 1
 		os.system("mkdir ../pickles/"+str(pickle_count))
 
