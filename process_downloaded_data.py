@@ -2,7 +2,7 @@ import json
 import os
 import numpy as np
 
-match_files = os.listdir("matches")
+match_files = os.listdir("../matches/")
 
 print(len(match_files))
 
@@ -15,12 +15,14 @@ for attr in attributes:
 
 count = 0
 skipped = 0
+actual_count = 0
+pickle_count = 0
 
 for filename in match_files:
 
 	count+=1
 
-	with open("matches/"+filename, "r") as f:
+	with open("../matches/"+filename, "r") as f:
 		data = json.load(f)
 
 	leaver = 0
@@ -36,7 +38,7 @@ for filename in match_files:
 		print(count," skipped")
 		skipped+=1
 		continue	
-
+	actual_count+=1
 	print(count)
 
 	hero_id_array_radiant = np.zeros(122)
@@ -56,12 +58,21 @@ for filename in match_files:
 		
 		match_data[attr] = np.append(match_data[attr], [np.concatenate((attr_array_radiant, attr_array_dire))], axis = 0)
 
-for attr in attributes:
-	with open("pickles/"+attr, "wb") as f:
-		np.save(f, match_data[attr])
+	if actual_count%10000==0:
+		pickle_count += 1
+		os.system("mkdir ../pickles/"+str(pickle_count))
 
-with open("pickles/hero_id", "wb") as f:
-		np.save(f, match_data["hero_id"])
+		for attr in attributes:
+			with open("../pickles/"+str(pickle_count)+"/"+attr, "wb") as f:
+				np.save(f, match_data[attr])
+
+			with open("../pickles/"+str(pickle_count)+"/hero_id", "wb") as f:
+				np.save(f, match_data["hero_id"])
+
+		match_data = {"hero_id": np.empty((0,244))}
+		for attr in attributes:
+			match_data[attr] = np.empty((0,244))
 
 print("Count", count)
+print("Actual Count", actual_count)
 print("Skipped", skipped)
